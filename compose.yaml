@@ -1,0 +1,11 @@
+services:
+  sftp:
+    image: atmoz/sftp
+    ports:
+      - "2222:22" # Mapea el puerto 2222 externo al 22 interno
+    volumes:
+      - "../files/imagenes:/home/usuario/upload"
+    command: usuario:password:::upload
+    networks:
+      - dokploy-network # Importante para la integración con el sistema
+    restart: always
